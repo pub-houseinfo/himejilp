@@ -1,4 +1,4 @@
-name: Deploy to Lolipop Test
+name: Deploy to Lolipop Himeji
 
 on:
   push:
