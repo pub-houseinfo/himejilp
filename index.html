@@ -11,7 +11,6 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="facebook-domain-verification" content="nl36608uwsgim3gg69rotwbdaifg6h" />
 
     <title>宿泊事業で、姫路駅周辺の未来をつくる | ハウスインフォ</title>
@@ -32,11 +31,7 @@
             --section-padding: 100px 20px;
         }
 
-        /* ページ内リンクの動きをスムーズにする */
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -70,7 +65,6 @@
         .btn-primary { background-color: var(--primary-color); color: var(--white); }
         .btn-outline { background-color: transparent; border: 2px solid var(--white); color: var(--white); margin-left: 15px; }
 
-        /* --- Header --- */
         header {
             position: absolute;
             width: 100%;
@@ -83,7 +77,6 @@
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--white); }
         .logo a { color: inherit; } 
 
-        /* --- Hero Section --- */
         #hero {
             position: relative;
             height: 100vh;
@@ -103,14 +96,13 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* 文字を読みやすく少し濃くしました */
+            background: rgba(0, 0, 0, 0.5);
         }
         .hero-content { position: relative; z-index: 1; padding: 0 20px; }
         .hero-content h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 25px; font-weight: 800; letter-spacing: 0.05em; line-height: 1.3; }
         .hero-content p { font-size: clamp(1rem, 2vw, 1.2rem); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
         .cta-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
 
-        /* --- Problem Section --- */
         #problems { padding: var(--section-padding); background-color: var(--bg-gray); }
         .problem-wrapper { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
         .problem-img { flex: 1; min-width: 320px; filter: grayscale(0.2); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -118,34 +110,25 @@
         .section-tag { color: var(--primary-color); font-weight: bold; display: block; margin-bottom: 12px; letter-spacing: 0.1em; }
         .section-title { font-size: 2.2rem; margin-bottom: 30px; line-height: 1.4; color: var(--secondary-color); }
 
-        /* --- Values Section --- */
         #values { padding: var(--section-padding); text-align: center; }
         #values > .container > p { text-align: left; max-width: 850px; margin: 0 auto 50px; }
-
         .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
         .value-card { background: var(--white); padding: 50px 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: left; transition: 0.3s; }
         .value-card:hover { transform: translateY(-5px); }
-        .value-icon { font-size: 3.5rem; margin-bottom: 25px; display: block; text-align: left; } /* アイコンも左寄せに */
+        .value-icon { font-size: 3.5rem; margin-bottom: 25px; display: block; text-align: left; }
         .value-card h3 { margin-bottom: 18px; font-size: 1.3rem; color: var(--secondary-color); }
         .value-card p { font-size: 0.95rem; color: #555; }
 
-        /* --- Strength Section --- */
         #strength { padding: var(--section-padding); background-color: var(--secondary-color); color: var(--white); }
         .strength-header { text-align: center; margin-bottom: 80px; }
         .strength-header p { max-width: 900px; margin: 0 auto; }
-        
         .step-flow { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
         .step-item { flex: 1; min-width: 180px; position: relative; padding: 0 10px; }
         .step-number { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 8px; color: var(--accent-color); }
         .step-name { font-weight: bold; font-size: 1.4rem; margin-bottom: 15px; }
         .step-desc { font-size: 0.88rem; line-height: 1.7; opacity: 0.95; text-align: justify; }
+        .step-item:not(:last-child)::after { content: "→"; position: absolute; right: -15px; top: 40px; font-size: 1.5rem; opacity: 0.2; }
 
-        /* 矢印のデザイン調整 */
-        .step-item:not(:last-child)::after { 
-            content: "→"; position: absolute; right: -15px; top: 40px; font-size: 1.5rem; opacity: 0.2; 
-        }
-
-        /* --- Achievements --- */
         #achievements { padding: var(--section-padding); }
         .achievement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
         .achievement-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; }
@@ -156,7 +139,6 @@
         .achievement-content h4 { margin-bottom: 10px; font-size: 1.2rem; color: var(--secondary-color); }
         .achievement-content p { font-size: 0.9rem; color: #777; }
 
-        /* --- Vision Section --- */
         #vision { padding: var(--section-padding); background-color: var(--bg-light); text-align: center; }
         .vision-diagram { display: flex; justify-content: center; align-items: center; gap: clamp(20px, 5vw, 50px); margin: 60px 0; }
         .vision-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: var(--primary-color); color: var(--white); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(192, 57, 43, 0.2); }
@@ -164,7 +146,6 @@
         .vision-circle:nth-child(5) { opacity: 0.6; transform: scale(1.2); }
         .arrow-text { font-size: 2rem; color: var(--primary-color); opacity: 0.5; }
 
-        /* --- Final CTA --- */
         #final-cta { padding: 120px 20px; background-color: var(--primary-color); color: var(--white); text-align: center; }
         .cta-box h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 25px; line-height: 1.3; }
         .btn-large { background-color: var(--white); color: var(--primary-color); font-size: 1.2rem; padding: 22px 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
@@ -172,7 +153,6 @@
         footer { padding: 60px 20px; text-align: center; font-size: 0.9rem; border-top: 1px solid #eee; background-color: var(--white); }
         footer a { color: var(--primary-color); font-weight: bold; }
 
-        /* --- Responsive --- */
         @media (max-width: 768px) {
             .step-item:not(:last-child)::after { display: none; }
             .step-flow { flex-direction: column; gap: 40px; }
@@ -183,23 +163,22 @@
             .btn-primary { width: 100%; }
         }
     </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '912852704640483');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '912852704640483');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
+    /></noscript>
 </head>
 <body>
 
@@ -227,7 +206,7 @@ src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
                 <div class="problem-text">
                     <span class="section-tag">OUR CHALLENGE</span>
                     <h2 class="section-title">姫路駅周辺の建物は、<br>いま岐路に立っています。</h2>
-                    <p>築年数を重ねた建物や、十分に活用されていない不動産が増えています。「今はまだ使えているから」と判断を先送りすると、老朽化が進んだ段階では選択肢が大きく狭まり、活用の可能性そのものを失ってしまうケースも少なくありません。<br><br>一方で今の姫路駅周辺には、人が通過するだけで終わってしまう立地が多く残されています。建物を宿泊事業という形で再編集し、街に滞在時間と関係人口を生み出すという選択肢を提案しています。</p>
+                    <p>築年数を重ねた建物や、十分に活用されていない不動産が増えています。一方で今の姫路駅周辺には、人が通過するだけで終わってしまう立地が多く残されています。建物を宿泊事業という形で再編集し、街に滞在時間と関係人口を生み出すという選択肢を提案しています。</p>
                 </div>
             </div>
         </div>
@@ -237,28 +216,28 @@ src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
         <div class="container">
             <span class="section-tag">OUR MISSION</span>
             <h2 class="section-title">宿泊事業は、地域を動かす“起点”になる。</h2>
-            <p>一晩泊まることで、人は街を歩き、店を使い、地域と接点を持つ。その積み重ねが、滞在時間・消費・関係人口を生み出します。宿泊事業を地域施策と民間事業をつなぐ装置とし、姫路駅周辺全体の活性化へとつなげていきます。</p>
+            <p>一晩泊まることで、人は街を歩き、店を使い、地域と接点を持つ。その積み重ねが、滞在時間・消費・関係人口を生み出します。</p>
             
             <div class="value-grid">
                 <div class="value-card">
                     <span class="value-icon">🍽️</span>
                     <h3>飲食店が利用される</h3>
-                    <p>宿泊により通過されがちだった夜の時間帯に人の流れが生まれます。飲食店の売上だけでなく、街のにぎわいそのものが回復していきます。</p>
+                    <p>宿泊により通過されがちだった夜の時間帯に人の流れが生まれます。</p>
                 </div>
                 <div class="value-card">
                     <span class="value-icon">🚶</span>
                     <h3>商店街に流れが生まれる</h3>
-                    <p>宿泊によって滞在時間が生まれることで、商店街を歩き、店に立ち寄る人の流れが自然に生まれ、新たな賑わいが広がっていきます。</p>
+                    <p>商店街を歩き、店に立ち寄る人の流れが自然に生まれ、新たな賑わいが広がっていきます。</p>
                 </div>
                 <div class="value-card">
                     <span class="value-icon">💡</span>
                     <h3>夜の街に灯りが戻る</h3>
-                    <p>宿泊客が夜の時間帯にも街に滞在することで、灯りが戻ってきます。安心感と賑わいが広がり、地域全体の魅力が回復していきます。</p>
+                    <p>宿泊客が夜の時間帯にも街に滞在することで、安心感と賑わいが回復していきます。</p>
                 </div>
                 <div class="value-card">
                     <span class="value-icon">🤝</span>
                     <h3>新たな雇用・事業機会</h3>
-                    <p>清掃や管理、飲食などの仕事が地域に広がります。新しい挑戦がしやすい環境が整い、地域の中から次の事業や担い手が育つきっかけになります。</p>
+                    <p>清掃や管理、飲食などの仕事が広がり、地域の中から次の担い手が育つきっかけになります。</p>
                 </div>
             </div>
         </div>
@@ -268,38 +247,37 @@ src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
         <div class="container">
             <div class="strength-header">
                 <span class="section-tag" style="color:var(--accent-color);">OUR STRENGTH</span>
-                <h2 class="section-title" style="color:white;">机上のアドバイスではなく、実務で伴走します。</h2>
-                <p>ハウスインフォは、土地や建物の可能性を整理する段階から、設計・建築、行政手続き、運営体制の構築まで自ら実務を担います。実際に宿泊施設を運営してきた経験があるからこそ、現実的な判断と調整が可能です。</p>
+                <h2 class="section-title" style="color:white;">実務で伴走します。</h2>
+                <p>企画から設計・建築、行政手続き、運営体制の構築まで自ら実務を担います。</p>
             </div>
             
             <div class="step-flow">
                 <div class="step-item">
                     <span class="step-number">STEP 01</span>
                     <div class="step-name">企画</div>
-                    <p class="step-desc">地域性・建物条件を踏まえ、宿泊事業の可能性を整理。収益性だけでなく、行政・金融機関とも共有できる事業構想を描きます。</p>
+                    <p class="step-desc">地域性・建物条件を踏まえ、宿泊事業の可能性を整理します。</p>
                 </div>
                 <div class="step-item">
                     <span class="step-number">STEP 02</span>
                     <div class="step-name">設計</div>
-                    <p class="step-desc">宿泊運営を前提とした実践的な設計。動線、清掃、法規対応まで考慮し、「実際に回る施設」を形にします。</p>
+                    <p class="step-desc">運営を前提とした実践的な設計。法規対応まで考慮します。</p>
                 </div>
                 <div class="step-item">
                     <span class="step-number">STEP 03</span>
                     <div class="step-name">施工</div>
-                    <p class="step-desc">コスト・品質・工程をバランスよく管理。将来の修繕や運営負荷まで見据えた建物づくりを行います。</p>
+                    <p class="step-desc">コスト・品質・工程を管理し、将来を見据えた建物づくりを行います。</p>
                 </div>
                 <div class="step-item">
                     <span class="step-number">STEP 04</span>
                     <div class="step-name">立ち上げ</div>
-                    <p class="step-desc">許認可取得、備品整備、運営フロー構築まで一括対応。「初日から運営できる状態」をつくります。</p>
+                    <p class="step-desc">許認可取得、備品整備、運営フロー構築まで一括対応します。</p>
                 </div>
                 <div class="step-item">
                     <span class="step-number">STEP 05</span>
                     <div class="step-name">運営・改善</div>
-                    <p class="step-desc">開業後も現場の両面から改善を重ね、地域に受け入れられ、結果として続く宿泊事業へ育てていきます。</p>
+                    <p class="step-desc">開業後も現場の両面から改善を重ね、事業を育てていきます。</p>
                 </div>
             </div>
-            <p style="text-align:center; margin-top:50px; font-weight:bold; letter-spacing:0.05em;">理想論ではなく「実行できる現実解」を一緒に描くことができます。</p>
         </div>
     </section>
 
@@ -325,7 +303,7 @@ src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
                         <div class="achievement-img"><img src="images/utakata01.jpg" alt="UTAKATA HOTEL HIMEJI"></div>
                         <div class="achievement-content">
                             <h4>UTAKATA HOTEL HIMEJI</h4>
-                            <p>二階町商店の２階を利用した宿</p>
+                            <p>商店街の空きスペースを利用した宿</p>
                         </div>
                     </a>
                 </div>
@@ -338,24 +316,6 @@ src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
                         </div>
                     </a>
                 </div>
-                <div class="achievement-card">
-                    <a href="https://sugomori.hyogo.jp/" target="_blank" rel="noopener noreferrer">
-                        <div class="achievement-img"><img src="images/sugomori01.jpg" alt="SUGOMoRIリゾート生野高原"></div>
-                        <div class="achievement-content">
-                            <h4>SUGOMoRIリゾート生野高原</h4>
-                            <p>古い別荘地の再生モデルリゾート</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="achievement-card">
-                    <a href="https://kona-resort.jp/" target="_blank" rel="noopener noreferrer">
-                        <div class="achievement-img"><img src="images/krak01.jpg" alt="KONA RESORT AWAJI KAI"></div>
-                        <div class="achievement-content">
-                            <h4>KONA RESORT AWAJI KAI</h4>
-                            <p>淡路島一棟貸しリゾート</p>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -364,20 +324,18 @@ src="https://www.facebook.com/tr?id=912852704640483&ev=PageView&noscript=1"
         <div class="container">
             <span class="section-tag">VISION</span>
             <h2 class="section-title">宿泊施設という“点”を、街の“面”へと広げていく。</h2>
-            <p>宿泊施設が少しずつ増え、駅周辺や商店街に点在するようになると、人の流れは線となり、やがて街全体へと広がっていきます。姫路駅周辺を「通過する街」から「滞在する街」へと静かに変えていきます。</p>
             <div class="vision-diagram">
                 <div class="vision-circle">点</div><div class="arrow-text">→</div>
                 <div class="vision-circle">線</div><div class="arrow-text">→</div>
                 <div class="vision-circle">面</div>
             </div>
-            <p style="font-weight:bold;">宿泊事業を起点に「点→線→面」へと広げる地域活性化モデルを実践しています。</p>
+            <p style="font-weight:bold;">宿泊事業を起点に地域活性化モデルを実践しています。</p>
         </div>
     </section>
 
     <section id="final-cta">
         <div class="container cta-box">
             <h2>まずは、建物と街の未来について<br>話しませんか。</h2>
-            <p>具体的な計画や案件がなくても構いません。<br>気軽な相談から、次の一歩が生まれます。</p>
             <div class="cta-group">
                 <a href="https://forms.gle/fxHrPbTXsHU1fXM97" target="_blank" rel="noopener noreferrer" class="btn btn-large">「建物と街の未来」について相談する</a>
             </div>
