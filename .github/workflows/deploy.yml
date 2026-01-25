@@ -19,4 +19,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           # ⚠️ テスト用に「lp-test」というフォルダに送る設定です
-          server-dir: /lp-test/
+          server-dir: /houseinfo/lp/lp-test/
