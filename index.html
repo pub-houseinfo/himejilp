@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4MK1LXN2J"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-Q4MK1LXN2J');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vc1r9pd6oc");
     </script>
 
     <meta charset="UTF-8">
@@ -44,7 +54,7 @@
         }
 
         img { max-width: 100%; height: auto; display: block; }
-        a { text-decoration: none; transition: 0.3s; }
+        a { text-decoration: none; transition: 0.3s; color: inherit; }
         ul { list-style: none; }
         .container { max-width: 1100px; margin: 0 auto; }
 
@@ -64,7 +74,7 @@
             opacity: 0.9; 
         }
         .btn-primary { background-color: var(--primary-color); color: var(--white); }
-        .btn-outline { background-color: transparent; border: 2px solid var(--white); color: var(--white); margin-left: 15px; }
+        .btn-outline { background-color: transparent; border: 2px solid var(--white); color: var(--white); }
 
         header {
             position: absolute;
@@ -106,31 +116,28 @@
 
         #problems { padding: var(--section-padding); background-color: var(--bg-gray); }
         .problem-wrapper { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; }
-        .problem-img { flex: 1; min-width: 320px; filter: grayscale(0.2); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .problem-img { flex: 1; min-width: 320px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .problem-text { flex: 1.2; min-width: 320px; }
         .section-tag { color: var(--primary-color); font-weight: bold; display: block; margin-bottom: 12px; letter-spacing: 0.1em; }
         .section-title { font-size: 2.2rem; margin-bottom: 30px; line-height: 1.4; color: var(--secondary-color); }
 
         #values { padding: var(--section-padding); text-align: center; }
-        #values > .container > p { text-align: left; max-width: 850px; margin: 0 auto 50px; }
-        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+        .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; margin-top: 50px; }
         .value-card { background: var(--white); padding: 50px 30px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); text-align: left; transition: 0.3s; }
         .value-card:hover { transform: translateY(-5px); }
-        .value-icon { font-size: 3.5rem; margin-bottom: 25px; display: block; text-align: left; }
+        .value-icon { font-size: 3.5rem; margin-bottom: 25px; display: block; }
         .value-card h3 { margin-bottom: 18px; font-size: 1.3rem; color: var(--secondary-color); }
         .value-card p { font-size: 0.95rem; color: #555; }
 
         #strength { padding: var(--section-padding); background-color: var(--secondary-color); color: var(--white); }
         .strength-header { text-align: center; margin-bottom: 80px; }
-        .strength-header p { max-width: 900px; margin: 0 auto; }
         .step-flow { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: flex-start; }
-        .step-item { flex: 1; min-width: 180px; position: relative; padding: 0 10px; }
+        .step-item { flex: 1; min-width: 180px; position: relative; }
         .step-number { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 8px; color: var(--accent-color); }
         .step-name { font-weight: bold; font-size: 1.4rem; margin-bottom: 15px; }
-        .step-desc { font-size: 0.88rem; line-height: 1.7; opacity: 0.95; text-align: justify; }
+        .step-desc { font-size: 0.88rem; line-height: 1.7; opacity: 0.95; }
         .step-item:not(:last-child)::after { content: "→"; position: absolute; right: -15px; top: 40px; font-size: 1.5rem; opacity: 0.2; }
 
-        /* --- News Styles --- */
         #news { padding: 80px 20px; background-color: var(--white); border-bottom: 1px solid var(--border-light); }
         .news-header { text-align: center; margin-bottom: 40px; }
         .news-list { max-width: 900px; margin: 0 auto; border-top: 1px solid var(--border-light); }
@@ -142,8 +149,8 @@
 
         #achievements { padding: var(--section-padding); }
         .achievement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
-        .achievement-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; }
-        .achievement-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .achievement-card { display: block; background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: 0.3s; }
+        .achievement-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
         .achievement-img { height: 240px; overflow: hidden; }
         .achievement-img img { width: 100%; height: 100%; object-fit: cover; }
         .achievement-content { padding: 25px; }
@@ -153,8 +160,6 @@
         #vision { padding: var(--section-padding); background-color: var(--bg-light); text-align: center; }
         .vision-diagram { display: flex; justify-content: center; align-items: center; gap: clamp(20px, 5vw, 50px); margin: 60px 0; }
         .vision-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: var(--primary-color); color: var(--white); font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(192, 57, 43, 0.2); }
-        .vision-circle:nth-child(3) { opacity: 0.8; transform: scale(1.1); }
-        .vision-circle:nth-child(5) { opacity: 0.6; transform: scale(1.2); }
         .arrow-text { font-size: 2rem; color: var(--primary-color); opacity: 0.5; }
 
         #final-cta { padding: 120px 20px; background-color: var(--primary-color); color: var(--white); text-align: center; }
@@ -170,13 +175,13 @@
             .step-item { text-align: left; padding: 0; border-left: 2px solid var(--accent-color); padding-left: 20px; }
             .vision-diagram { flex-direction: column; gap: 20px; }
             .cta-group { flex-direction: column; }
-            .btn-outline { margin-left: 0; margin-top: 10px; width: 100%; }
+            .btn-outline { margin-top: 10px; width: 100%; }
             .btn-primary { width: 100%; }
-            .news-item { flex-direction: column; gap: 10px; padding: 20px 0; }
-            .news-date { min-width: auto; }
+            .news-item { flex-direction: column; gap: 10px; }
         }
     </style>
 
+    <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -229,7 +234,7 @@
         <div class="container">
             <span class="section-tag">OUR MISSION</span>
             <h2 class="section-title">宿泊事業は、地域を動かす“起点”になる。</h2>
-            <p>一晩泊まることで、人は街を歩き、店を使い、地域と接点を持つ。その積み重ねが、滞在時間・消費・関係人口を生み出します。</p>
+            <p style="text-align: left; max-width: 850px; margin: 0 auto 50px;">一晩泊まることで、人は街を歩き、店を使い、地域と接点を持つ。その積み重ねが、滞在時間・消費・関係人口を生み出します。</p>
             
             <div class="value-grid">
                 <div class="value-card">
@@ -240,12 +245,12 @@
                 <div class="value-card">
                     <span class="value-icon">🚶</span>
                     <h3>商店街に流れが生まれる</h3>
-                    <p>商店街を歩き、店に立ち寄る人の流れが自然に生まれ、新たな賑わいが広がっていきます。</p>
+                    <p>商店街を歩き、店に立ち寄る人の流れが自然に生まれ、賑わいが広がっていきます。</p>
                 </div>
                 <div class="value-card">
                     <span class="value-icon">💡</span>
                     <h3>夜の街に灯りが戻る</h3>
-                    <p>宿泊客が夜の時間帯にも街に滞在することで、安心感と賑わいが回復していきます。</p>
+                    <p>宿泊客が夜も街に滞在することで、安心感と賑わいが回復していきます。</p>
                 </div>
                 <div class="value-card">
                     <span class="value-icon">🤝</span>
@@ -294,7 +299,6 @@
         </div>
     </section>
 
-    <!-- ★ お知らせセクションを追加しました ★ -->
     <section id="news">
         <div class="container">
             <div class="news-header">
@@ -302,7 +306,6 @@
                 <h2 class="section-title">お知らせ</h2>
             </div>
             <div id="news-list" class="news-list">
-                <!-- ここにJavaScriptで情報が入ります -->
                 <p style="text-align: center; padding: 40px; color: #999;">読み込み中...</p>
             </div>
         </div>
@@ -373,7 +376,6 @@
         <p>&copy; 2024-2026 <a href="https://houseinfo.jp/" target="_blank" rel="noopener noreferrer">houseinfo</a>. All Rights Reserved.</p>
     </footer>
 
-    <!-- ★ microCMS取得用のJavaScript ★ -->
     <script>
         const serviceDomain = "himejiyadolp"; 
         const apiKey = "JVD618WY7mbQGNV9dZFKZc5TUXJdhmTjWeOE";
