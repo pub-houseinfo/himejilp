@@ -12,20 +12,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # ⚠️ SSH転送の邪魔になる管理ファイルを削除
       - name: Remove unnecessary files
         run: rm -rf .git .github
 
       - name: Copy files via SSH password
         uses: appleboy/scp-action@v0.1.7
         with:
+          # ⚠️ image_1f864a.png で登録した名前に完全に一致させています
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASS }}
           port: 2222
           
           source: "."
-          # ⚠️ 成功実績のある「web/」から始まる相対パスを指定
+          # ⚠️ 姫路LP用のパス
           target: "web/houseinfo/lp/himeji"
           
           overwrite: true
