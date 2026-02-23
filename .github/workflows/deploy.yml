@@ -25,7 +25,7 @@ jobs:
           port: 2222
           
           source: "."
-          target: "web/houseinfo/lp/himeji/"
+          target: "web/houseinfo/lp/himeji"
           
           overwrite: true
           strip_components: 0
