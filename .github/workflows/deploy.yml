@@ -1,4 +1,4 @@
-name: Deploy via SSH (SFTP) to Lolipop
+name: Deploy to Lolipop (Organization Repo)
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # ⚠️ 修正ポイント：サーバーに不要な管理ファイルを削除してから送ります
+      # ⚠️ SSH転送の邪魔になる管理ファイルを削除
       - name: Remove unnecessary files
         run: rm -rf .git .github
 
@@ -25,6 +25,7 @@ jobs:
           port: 2222
           
           source: "."
+          # ⚠️ 成功実績のある「web/」から始まる相対パスを指定
           target: "web/houseinfo/lp/himeji"
           
           overwrite: true
