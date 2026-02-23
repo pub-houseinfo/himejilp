@@ -1,9 +1,9 @@
-name: Deploy to Lolipop Himeji
+name: Deploy via SSH (SFTP) to Lolipop
 
 on:
   push:
     branches:
-      - main  # mainブランチに更新（保存）があったら実行
+      - main
 
 jobs:
   deploy:
@@ -12,11 +12,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # ⚠️ 修正ポイント：サーバーに不要な管理ファイルを削除してから送ります
+      - name: Remove unnecessary files
+        run: rm -rf .git .github
+
+      - name: Copy files via SSH password
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          # ⚠️ 下記の　lp以降のフォルダ名が送る場所の設定です
-          server-dir: /houseinfo/lp/himeji/
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
+          port: 2222
+          
+          source: "."
+          target: "web/houseinfo/lp/himeji/"
+          
+          overwrite: true
+          strip_components: 0
