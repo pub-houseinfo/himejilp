@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q4MK1LXN2J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q4MK1LXN2J');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vc1r9pd6oc");
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>収支シミュレーション | 姫路・空き物件・土地 宿泊活用相談室</title>
+    <meta name="description" content="姫路の空き物件・空き土地を宿泊施設に変えた場合の収支を、3つの稼働率パターンで即時シミュレーション。">
+
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-gothic { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; }
+        .bg-navy { background-color: #0f172a; }
+        .text-gold { color: #c5a059; }
+        .bg-gold { background-color: #c5a059; }
+        .border-gold { border-color: #c5a059; }
+        .text-navy { color: #0f172a; }
+        .border-navy { border-color: #0f172a; }
+
+        .line-btn {
+            background-color: #06C755;
+            transition: all 0.3s;
+        }
+        .line-btn:hover {
+            background-color: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(6, 199, 85, 0.3);
+        }
+
+        input[type="number"] {
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .input-row input {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .result-card {
+            transition: transform 0.2s;
+        }
+        .result-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.1) 0%, rgba(197, 160, 89, 0.03) 100%);
+            border-left: 3px solid #c5a059;
+        }
+
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- ========== ヘッダー ========== -->
+    <nav class="bg-navy py-3 px-4 md:py-4 md:px-12 flex justify-between items-center border-b border-gold/20 sticky top-0 z-50">
+        <a href="/himejilp/" class="text-white font-gothic text-lg md:text-2xl tracking-tight hover:text-gold transition-colors flex items-center gap-2">
+            ハウスインフォ
+            <span class="hidden md:inline bg-white/10 text-[10px] md:text-[11px] px-2 py-0.5 rounded text-slate-300 font-normal border border-white/20">収支シミュ</span>
+        </a>
+        <a href="https://lin.ee/YxRVxeJ" target="_blank" rel="noopener noreferrer"
+           class="line-btn text-white px-3 py-1.5 md:px-6 md:py-2 rounded-sm text-xs md:text-sm font-bold shadow-lg">
+            相談する
+        </a>
+    </nav>
+
+    <!-- ========== ヒーロー ========== -->
+    <header class="bg-navy text-white py-12 md:py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-gold font-bold tracking-[0.15em] text-xs md:text-sm mb-4">SIMULATION</p>
+            <h1 class="text-3xl md:text-5xl font-serif leading-tight mb-6">
+                あなたの物件、<br class="md:hidden">宿にしたらいくら残る？
+            </h1>
+            <p class="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-loose">
+                初期費用・客室数・稼働率を入力するだけで、月次・年間の収支と回収期間を即時計算。
+                姫路駅周辺の実例値をデフォルトに設定しています。
+            </p>
+        </div>
+    </header>
+
+    <!-- ========== メイン ========== -->
+    <main class="max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-16">
+
+        <!-- 初期投資セクション -->
+        <section class="bg-white rounded-lg shadow-lg border-t-4 border-gold p-6 md:p-10 mb-10">
+            <h2 class="font-serif text-2xl md:text-3xl text-navy mb-2">① 初期投資</h2>
+            <p class="text-xs md:text-sm text-slate-500 mb-6">
+                物件取得からオープンまでに必要な一時費用。代理店費と合計は自動計算します。
+            </p>
+
+            <div class="space-y-3">
+                <!-- 各入力行 -->
+                <div class="input-row flex items-center gap-3 pb-2 border-b border-slate-100">
+                    <label class="flex-1 text-sm md:text-base text-slate-700">
+                        物件取得費
+                        <span class="block text-xs text-slate-400">購入・融資・相続</span>
+                    </label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="acqCost" value="30000000" class="w-32 md:w-44 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500">円</span>
+                    </div>
+                </div>
+
+                <div class="input-row flex items-center gap-3 pb-2 border-b border-slate-100">
+                    <label class="flex-1 text-sm md:text-base text-slate-700">
+                        リフォーム・内装費
+                        <span class="block text-xs text-slate-400">解体・内装・水回り</span>
+                    </label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="reform" value="30000000" class="w-32 md:w-44 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500">円</span>
+                    </div>
+                </div>
+
+                <div class="input-row flex items-center gap-3 pb-2 border-b border-slate-100">
+                    <label class="flex-1 text-sm md:text-base text-slate-700">
+                        家具・家電・備品
+                        <span class="block text-xs text-slate-400">ベッド・冷蔵庫・洗濯機 等</span>
+                    </label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="furniture" value="3000000" class="w-32 md:w-44 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500">円</span>
+                    </div>
+                </div>
+
+                <div class="input-row flex items-center gap-3 pb-2 border-b border-slate-100">
+                    <label class="flex-1 text-sm md:text-base text-slate-700">
+                        装飾品・アメニティ・小物類
+                        <span class="block text-xs text-slate-400">タオル・シャンプー 等</span>
+                    </label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="amenity" value="1000000" class="w-32 md:w-44 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500">円</span>
+                    </div>
+                </div>
+
+                <div class="input-row flex items-center gap-3 pb-2 border-b border-slate-100">
+                    <label class="flex-1 text-sm md:text-base text-slate-700">
+                        許認可等費用
+                        <span class="block text-xs text-slate-400">旅館業許可 等</span>
+                    </label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="license" value="200000" class="w-32 md:w-44 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500">円</span>
+                    </div>
+                </div>
+
+                <!-- 代理店費（自動計算） -->
+                <div class="input-row flex items-center gap-3 pb-2 border-b border-slate-100 bg-slate-50 -mx-4 md:-mx-6 px-4 md:px-6 py-2 rounded">
+                    <label class="flex-1 text-sm md:text-base text-slate-600">
+                        代理店費（10%）＋サポート費 90万円
+                        <span class="block text-xs text-slate-400">自動計算</span>
+                    </label>
+                    <div class="flex items-center gap-1">
+                        <span id="agentFee" class="w-32 md:w-44 px-3 py-2 text-right font-mono text-slate-700 stat-number">–</span>
+                        <span class="text-sm text-slate-500">円</span>
+                    </div>
+                </div>
+
+                <!-- 初期投資合計（大） -->
+                <div class="flex items-center gap-3 pt-3 bg-navy text-white -mx-4 md:-mx-6 px-4 md:px-6 py-4 rounded">
+                    <label class="flex-1 text-base md:text-lg font-bold">初期投資合計</label>
+                    <div class="flex items-center gap-1">
+                        <span id="totalInvest" class="w-32 md:w-44 px-3 py-2 text-right text-xl md:text-2xl font-serif text-gold stat-number">–</span>
+                        <span class="text-sm">円</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 基本設定セクション -->
+        <section class="bg-white rounded-lg shadow-lg border-t-4 border-gold p-6 md:p-10 mb-10">
+            <h2 class="font-serif text-2xl md:text-3xl text-navy mb-2">② 運営の基本設定</h2>
+            <p class="text-xs md:text-sm text-slate-500 mb-6">
+                客室数・単価・経費率などの運営条件。姫路駅エリアの平均値をデフォルトにしています。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm text-slate-700 mb-1">1泊単価</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="price" value="40000" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">円/泊</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">姫路エリア平均（実績）</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-700 mb-1">客室数</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="rooms" value="2" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">室</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">1棟1室～複数室まで</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-700 mb-1">平均宿泊人数</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="guests" value="4" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">人</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">1組あたりの人数</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-700 mb-1">月間稼働日数</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="days" value="30" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">日</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">通常30日</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-700 mb-1">清掃費（1回あたり）</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="cleanFee" value="20000" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">円/回</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">外注想定</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-slate-700 mb-1">OTA手数料</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="otaRate" value="15" step="1" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">%</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">Airbnb/Booking.com 等</p>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm text-slate-700 mb-1">月次固定費</label>
+                    <div class="flex items-center gap-1">
+                        <input type="number" id="fixedCost" value="150000" class="flex-1 px-3 py-2 text-right border border-slate-300 rounded focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"/>
+                        <span class="text-sm text-slate-500 w-10">円/月</span>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1">家賃・光熱費・通信費等</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 結果セクション -->
+        <section class="mb-10">
+            <h2 class="font-serif text-2xl md:text-3xl text-navy mb-2 text-center">③ 稼働率別シミュレーション</h2>
+            <p class="text-xs md:text-sm text-slate-500 mb-6 text-center">
+                運営開始後の月次・年間収支を、3つの稼働率パターンで試算
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- 50% -->
+                <div class="result-card bg-white rounded-lg shadow-lg p-5 md:p-6 border-t-2 border-slate-300">
+                    <div class="text-center mb-4">
+                        <p class="text-xs text-slate-500 mb-1">稼働率</p>
+                        <p class="font-serif text-4xl md:text-5xl text-slate-500 stat-number">50<span class="text-xl">%</span></p>
+                        <p class="text-xs text-slate-400">控えめ／開業初期</p>
+                    </div>
+                    <dl class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">延べ稼働日数</dt>
+                            <dd class="font-mono stat-number" id="days50">–</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">月売上</dt>
+                            <dd class="font-mono stat-number font-bold" id="rev50">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ OTA手数料</dt>
+                            <dd class="font-mono stat-number" id="ota50">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ 清掃費</dt>
+                            <dd class="font-mono stat-number" id="clean50">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ 固定費</dt>
+                            <dd class="font-mono stat-number" id="fixed50">–</dd>
+                        </div>
+                        <div class="border-t border-slate-200 pt-2 flex justify-between">
+                            <dt class="font-bold text-navy">月次収支</dt>
+                            <dd class="font-serif text-lg stat-number font-bold" id="profit50">–</dd>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-500 pt-2">
+                            <dt>年間純利益</dt>
+                            <dd class="font-mono stat-number" id="annual50">–</dd>
+                        </div>
+                        <div class="result-highlight p-2 rounded flex justify-between">
+                            <dt class="text-xs text-slate-600">投資回収</dt>
+                            <dd class="font-serif text-navy stat-number font-bold" id="payback50">–</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- 65% 中央 強調 -->
+                <div class="result-card bg-white rounded-lg shadow-2xl p-5 md:p-6 border-t-4 border-gold md:-mt-2 md:mb-2 relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-navy text-[11px] font-bold px-3 py-1 rounded-full whitespace-nowrap">標準モデル</span>
+                    <div class="text-center mb-4">
+                        <p class="text-xs text-gold mb-1 font-bold">稼働率</p>
+                        <p class="font-serif text-4xl md:text-5xl text-navy stat-number">65<span class="text-xl">%</span></p>
+                        <p class="text-xs text-slate-400">姫路駅エリア平均</p>
+                    </div>
+                    <dl class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">延べ稼働日数</dt>
+                            <dd class="font-mono stat-number" id="days65">–</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">月売上</dt>
+                            <dd class="font-mono stat-number font-bold" id="rev65">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ OTA手数料</dt>
+                            <dd class="font-mono stat-number" id="ota65">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ 清掃費</dt>
+                            <dd class="font-mono stat-number" id="clean65">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ 固定費</dt>
+                            <dd class="font-mono stat-number" id="fixed65">–</dd>
+                        </div>
+                        <div class="border-t border-slate-200 pt-2 flex justify-between">
+                            <dt class="font-bold text-navy">月次収支</dt>
+                            <dd class="font-serif text-lg stat-number font-bold text-gold" id="profit65">–</dd>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-500 pt-2">
+                            <dt>年間純利益</dt>
+                            <dd class="font-mono stat-number" id="annual65">–</dd>
+                        </div>
+                        <div class="result-highlight p-2 rounded flex justify-between">
+                            <dt class="text-xs text-slate-600">投資回収</dt>
+                            <dd class="font-serif text-navy stat-number font-bold" id="payback65">–</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- 70% -->
+                <div class="result-card bg-white rounded-lg shadow-lg p-5 md:p-6 border-t-2 border-slate-300">
+                    <div class="text-center mb-4">
+                        <p class="text-xs text-slate-500 mb-1">稼働率</p>
+                        <p class="font-serif text-4xl md:text-5xl text-slate-500 stat-number">70<span class="text-xl">%</span></p>
+                        <p class="text-xs text-slate-400">強気／繁忙期想定</p>
+                    </div>
+                    <dl class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">延べ稼働日数</dt>
+                            <dd class="font-mono stat-number" id="days70">–</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">月売上</dt>
+                            <dd class="font-mono stat-number font-bold" id="rev70">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ OTA手数料</dt>
+                            <dd class="font-mono stat-number" id="ota70">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ 清掃費</dt>
+                            <dd class="font-mono stat-number" id="clean70">–</dd>
+                        </div>
+                        <div class="flex justify-between text-red-700/80">
+                            <dt>▲ 固定費</dt>
+                            <dd class="font-mono stat-number" id="fixed70">–</dd>
+                        </div>
+                        <div class="border-t border-slate-200 pt-2 flex justify-between">
+                            <dt class="font-bold text-navy">月次収支</dt>
+                            <dd class="font-serif text-lg stat-number font-bold" id="profit70">–</dd>
+                        </div>
+                        <div class="flex justify-between text-xs text-slate-500 pt-2">
+                            <dt>年間純利益</dt>
+                            <dd class="font-mono stat-number" id="annual70">–</dd>
+                        </div>
+                        <div class="result-highlight p-2 rounded flex justify-between">
+                            <dt class="text-xs text-slate-600">投資回収</dt>
+                            <dd class="font-serif text-navy stat-number font-bold" id="payback70">–</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <!-- 注意事項 -->
+        <section class="bg-slate-100 p-5 md:p-6 rounded-lg mb-10 text-xs md:text-sm text-slate-600 leading-loose">
+            <p class="font-bold text-navy mb-2">📋 ご利用にあたって</p>
+            <ul class="space-y-1 list-disc list-inside">
+                <li>上記は<strong>概算モデル</strong>です。実際の収支は物件条件・運営状況により異なります。</li>
+                <li>清掃費・OTA手数料は<strong>変動費</strong>として稼働日数に連動して計算しています。</li>
+                <li>投資回収期間は「初期投資合計 ÷ 年間純利益」で算出しています。</li>
+                <li>入力値はブラウザ上でのみ計算され、サーバーには送信されません。</li>
+            </ul>
+        </section>
+
+        <!-- CTA -->
+        <section class="bg-navy text-white p-6 md:p-12 rounded-lg text-center">
+            <p class="text-gold font-bold tracking-[0.15em] text-xs md:text-sm mb-3">NEXT STEP</p>
+            <h2 class="font-serif text-2xl md:text-3xl mb-4 leading-relaxed">
+                実際の物件で、<br class="md:hidden">もっと詳しく試算してみませんか？
+            </h2>
+            <p class="text-sm text-slate-300 mb-8 max-w-2xl mx-auto">
+                住所・築年数・面積などの情報をLINEでお送りいただければ、姫路で9施設30棟超を運営してきた実績をもとに、
+                <strong class="text-white">あなたの物件専用の収支レポート</strong>を無料で作成します。
+            </p>
+            <a href="https://lin.ee/YxRVxeJ" target="_blank" rel="noopener noreferrer"
+               class="line-btn text-white px-10 py-4 rounded-lg text-base md:text-lg font-bold shadow-2xl inline-flex items-center gap-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"></path></svg>
+                LINEで個別相談する
+            </a>
+            <p class="text-xs text-slate-400 mt-4">売り込みは一切しません／ブロックはいつでもOK</p>
+        </section>
+
+    </main>
+
+    <!-- ========== フッター ========== -->
+    <footer class="bg-navy text-slate-400 py-6 text-center text-xs">
+        <p>© 2026 株式会社ハウスインフォ ｜
+            <a href="/himejilp/" class="hover:text-gold">LPに戻る</a>
+        </p>
+    </footer>
+
+    <script>
+        // 数値フォーマッタ（整数・カンマ区切り）
+        const fmt = n => {
+            if (!isFinite(n) || isNaN(n)) return '–';
+            return Math.round(n).toLocaleString('ja-JP');
+        };
+
+        const fmtYearMonth = yearsFloat => {
+            if (!isFinite(yearsFloat) || yearsFloat <= 0) return '–';
+            const totalMonths = Math.round(yearsFloat * 12);
+            const y = Math.floor(totalMonths / 12);
+            const m = totalMonths % 12;
+            if (y === 0) return `${m}ヶ月`;
+            if (m === 0) return `${y}年`;
+            return `${y}年${m}ヶ月`;
+        };
+
+        // 入力要素を全て取得
+        const inputs = {
+            acqCost: document.getElementById('acqCost'),
+            reform: document.getElementById('reform'),
+            furniture: document.getElementById('furniture'),
+            amenity: document.getElementById('amenity'),
+            license: document.getElementById('license'),
+            price: document.getElementById('price'),
+            rooms: document.getElementById('rooms'),
+            guests: document.getElementById('guests'),
+            days: document.getElementById('days'),
+            cleanFee: document.getElementById('cleanFee'),
+            otaRate: document.getElementById('otaRate'),
+            fixedCost: document.getElementById('fixedCost'),
+        };
+
+        // 計算メイン関数
+        function calculate() {
+            // ---- 初期投資 ----
+            const acq = +inputs.acqCost.value || 0;
+            const reform = +inputs.reform.value || 0;
+            const furn = +inputs.furniture.value || 0;
+            const amen = +inputs.amenity.value || 0;
+            const lic = +inputs.license.value || 0;
+
+            const subTotal = acq + reform + furn + amen + lic;
+            // 代理店費 = 初期投資小計の10% + サポート費90万円（6ヶ月分）
+            const agentFee = subTotal * 0.1 + 900000;
+            const totalInvest = subTotal + agentFee;
+
+            document.getElementById('agentFee').textContent = fmt(agentFee);
+            document.getElementById('totalInvest').textContent = fmt(totalInvest);
+
+            // ---- 基本設定 ----
+            const price = +inputs.price.value || 0;
+            const rooms = +inputs.rooms.value || 0;
+            const days = +inputs.days.value || 0;
+            const cleanFee = +inputs.cleanFee.value || 0;
+            const otaRate = (+inputs.otaRate.value || 0) / 100;
+            const fixedCost = +inputs.fixedCost.value || 0;
+
+            // ---- 3パターン ----
+            const patterns = [0.5, 0.65, 0.7];
+            const ids = ['50', '65', '70'];
+
+            patterns.forEach((rate, i) => {
+                // 延べ稼働日数（客室数 × 月間日数 × 稼働率）
+                const occupiedDays = rooms * days * rate;
+
+                // 月売上 = 延べ稼働日数 × 単価
+                // （Excelでは稼働日数×単価×客室数で計算していますが、
+                //  延べ稼働日数に既に客室数が含まれるため、ここでは単純に
+                //  延べ稼働日数×単価で計算）
+                const revenue = occupiedDays * price;
+
+                const ota = revenue * otaRate;
+                const clean = occupiedDays * cleanFee;
+                const fixed = fixedCost;
+
+                const expense = ota + clean + fixed;
+                const profit = revenue - expense;
+
+                const annualProfit = profit * 12;
+                const paybackYears = totalInvest > 0 && annualProfit > 0 ? totalInvest / annualProfit : NaN;
+
+                const id = ids[i];
+                document.getElementById(`days${id}`).textContent = fmt(occupiedDays) + '日';
+                document.getElementById(`rev${id}`).textContent = fmt(revenue) + '円';
+                document.getElementById(`ota${id}`).textContent = fmt(ota) + '円';
+                document.getElementById(`clean${id}`).textContent = fmt(clean) + '円';
+                document.getElementById(`fixed${id}`).textContent = fmt(fixed) + '円';
+                document.getElementById(`profit${id}`).textContent = fmt(profit) + '円';
+                document.getElementById(`annual${id}`).textContent = fmt(annualProfit) + '円';
+                document.getElementById(`payback${id}`).textContent = fmtYearMonth(paybackYears);
+            });
+        }
+
+        // 全入力欄に変更イベント登録
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        // 初期計算
+        calculate();
+    </script>
+</body>
+</html>
